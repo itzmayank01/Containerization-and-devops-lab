@@ -269,7 +269,7 @@ Efficient resource utilization
 2. Run installer with default settings  
 3. Restart system if prompted
 
-![Oracle VirtualBox](images/virtualbox.png)
+![Oracle VirtualBox](virtualbox.png)
 
 
 Oracle VirtualBox
