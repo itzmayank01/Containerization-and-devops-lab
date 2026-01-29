@@ -269,7 +269,8 @@ Efficient resource utilization
 2. Run installer with default settings  
 3. Restart system if prompted
 
-![](images/0024e84dc14b25960559d770c418421639c69cfd70a3ec824657f32e9eb2abfe.jpg)
+![Oracle VirtualBox](images/virtualbox.png)
+
 
 Oracle VirtualBox
 
