@@ -1,7 +1,5 @@
 # Containerization and DevOps Lab
 
-# Experiment -1
-
 Name: Mayank Thakur
 
 Roll no: R2142230924
