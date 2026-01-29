@@ -340,9 +340,7 @@ sudo apt update
 sudo apt install -y nginx  
 sudo systemd start nginx
 
-```shell
-vagrant@vagrant:~$ sudo aptupdate sudo apt install -y nginx sudo systemdstartnginx
-```
+![](InstallNGINX.png)
 
 # Step 5: Verify Nginx in VM
 
@@ -350,45 +348,11 @@ curl localhost
 
 Nginx default HTML page confirms successful deployment.
 
-```txt
-vagrant@vagrant:~$ curl localhost
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to/nginx.</title>
-<style>
-body {
-width: 35em;
-margin: 0 auto;
-font-family: Tahoma, Verdana, Arial, sans-serif;
-}
-</style>
-</head>
-<body>
-<h1>Welcome to/nginx.</h1>
-<p>If you see this page, the/nginx web server is successfully installed and working. Further configuration is required.</p>
-<For online documentation and support please refer to <a href="http://nginx.org/"nginx.org></a>.<br />
-Commercial support is available at <a href="http://nginx.com/"nginx.com></a>.</p>
-<Please thank you for using/nginx.</em></p>
-</body>
-</html>
-vagrant@vagrant:~$
-```
+![](Verifynginx.png)
 
 # Step 6: Stop and Remove VM
+![](stopremovevm.png)
 
-```txt
-vagrant halt vagrant destroy
-```
-
-```txt
-PS C:\Users\HP\Desktop> vagrant halt  
- $\Rightarrow$  default: Attempting graceful shutdown of VM...  
-PS C:\Users\HP\Desktop> vagrant destroy  
-default: Are you sure you want to destroy the 'default' VM? [y/N] y  
- $\Rightarrow$  default: Destroying VM and associated drives...  
-PS C:\Users\HP\Desktop>
-```
 
 # PART B: Container Setup using Docker inside WSL
 
