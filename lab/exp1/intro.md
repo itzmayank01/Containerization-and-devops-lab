@@ -296,7 +296,7 @@ Download VirtualBox for Linux Hosts ¶ The VirtualBox base …
 
 1. Download Vagrant for Windows
 
-![](images/7a598481bbe570487bee106cb9d01f493ae301c78422b4c549f70fcf7d94c0d3.jpg)
+![](Vagrant.png)
 
 2. Install using default options  
 3. Verify installation:
