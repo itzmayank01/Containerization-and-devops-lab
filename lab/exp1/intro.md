@@ -290,7 +290,7 @@ Download VirtualBox for Linux Hosts ¶ The VirtualBox base …
 
 >
 
-![](images/90c0d457ff808536677f83ffd66e9c9557770c0323e54cc232732749b4311ba8.jpg)
+![](downloadvirtualbox.png)
 
 # Step 2: Install Vagrant
 
