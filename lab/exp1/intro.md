@@ -323,6 +323,8 @@ vagrant init ubuntu/jammy64
 3.Start the Virtual Machine:
 
 vagrant up
+
+
 ![](Vagrantup.png)
 
 
