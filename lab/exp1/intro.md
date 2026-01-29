@@ -332,30 +332,7 @@ vagrant up
 
 # vagrant ssh
 
-```yaml
-vagrant@vagrant: ~ X + V
-default: your host and reload your VM.
-default:
-default: Guest Additions Version: 6.0.10
-default: VirtualBox Version: 7.2
-=> default: Mounting shared folders...
-default: C:/Users/HP/Desktop => /vagrant
-PS C:\Users\HP\Desktop> vagrant ssh
-Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-58-generic x86_64)
-* Documentation: https://help.ubuntu.com
-* Management: https://landscape.canonical.com
-* Support: https://ubuntu.com/advantage
-System information as of Wed Jan 21 12:21:07 UTC 2026
-System load: 0.16 Processes: 92
-Usage of/: 2.5% of 61.80GB Users logged in: 0
-Memory usage: 11%
-Swap usage: 0%
-* Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s just raised the bar for easy, resilient and secure K8s cluster deployment.
-https://ubuntu.com/engage/secure-kubernetes-at-the-edge
-0 packages can be updated.
-0 updates are security updates.
-vagrant@vagrant:~$ |
-```
+![](Vagrantssh.png)
 
 # Step 4: Install Nginx inside VM
 
