@@ -323,22 +323,8 @@ vagrant init ubuntu/jammy64
 3.Start the Virtual Machine:
 
 vagrant up
+![](Vagrantup.png)
 
-```txt
-PS C:\Users\HP\Desktop\lab1> vagrant up   
-Bringing machine 'default' up with 'virtualbox' provider...   
- $\Rightarrow$  default: Box hashicorp/bionic64' could not be found. Attempting to find and install... default: Box Provider: virtualbox default: Box Version:  $\Rightarrow 0$ $\Rightarrow$  default: Loading metadata for box hashicorp/bionic64' default: URL: https://vagrantcloud.com/api/v2/vagrant/Hashicorp/bionic64   
- $\Rightarrow$  default: Adding box hashicorp/bionic64' (v1.0.282) for provider: virtualbox default: Downloading: https://vagrantcloud.com/hazicorp/boxes/bionic64/versions/1.0.282/provider/virtualbox/unknown/vagrant.box default:   
- $\Rightarrow$  default: Successfully added box hashicorp/bionic64' (v1.0.282) for 'virtualbox'!   
- $\Rightarrow$  default: Importing base box hashicorp/bionic64'..   
- $\Rightarrow$  default: Matching MAC address for NAT networking..   
- $\Rightarrow$  default: Checking if box hashicorp/bionic64' version '1.0.282' is up to date...   
- $\Rightarrow$  default: Setting the name of the VM: lab1_default_1768966731108_16373 Vagrant is currently configured to create VirtualBox synced folders with the 'SharedFoldersEnableSymlinksCreate' option enabled. If the Vagrant guest is not trusted, you may want to disable this option. For more information on this option, please refer to the VirtualBox manual: https://www.virtualbox.org/manual/ch04.html#shared folders   
-This option can be disabled globally with an environment variable: VAGRANT_DISABLE_VBOXSYLINKCREATE  $= 1$    
-or on a per folder basis within the Vagrantfile: config.vm-synced_folder '/host/path', '/guest/path', SharedFoldersEnableSymlinksCreate: false   
- $\Rightarrow$  default: Clearing any previously set network interfaces...   
- $\Rightarrow$  default: Preparing network interfaces based on configuration...
-```
 
 # 4. Access the VM:
 
