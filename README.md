@@ -1,8 +1,8 @@
 # Containerization-and-devops-lab
 
-# Name - Mayank Thakur  
-# Sap id - 500123412  
-# Batch - 3
+ Name - Mayank Thakur  
+ Sap id - 500123412  
+ Batch - 3
 
 ## LAB
 
