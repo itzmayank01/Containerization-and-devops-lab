@@ -11,4 +11,4 @@
 
 ## THEORY
 
-1. [Docker Theory Demo B3B4](theory/DemoB3B4/README.md)
+1. [Docker Theory Demo B3B4](theory/.DemoB3B4/README.md)
