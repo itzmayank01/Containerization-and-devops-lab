@@ -12,4 +12,4 @@
 
 ## THEORY
 
-1. [Docker Theory Demo B3B4](Containerization-and-devops-lab/theory/.DemoB3B4)
+1. [Docker Theory Demo B3B4](theory/.DemoB3B4)
