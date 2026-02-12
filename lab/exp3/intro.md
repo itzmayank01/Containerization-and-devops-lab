@@ -1,6 +1,19 @@
 #  Deploying NGINX Using Different Base Images and Comparing Docker Image Layers
 
 ---
+## Name: Mayank Thakur
+
+
+
+
+
+
+Roll no: R2142230924
+Sap-ID: 500123412
+School of Computer Science,
+
+University of Petroleum and Energy Studies, Dehradun
+
 
 ##  Experiment 3
 Deploying NGINX Web Server Using Official, Ubuntu, and Alpine Base Images and Comparing Image Layers
