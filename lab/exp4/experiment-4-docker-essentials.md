@@ -244,6 +244,7 @@ EXPOSE 5000
 # Run application
 CMD ["python", "app.py"]
 ```
+![](Dockermultistage.png)
 
 ### **Step 3: Build and Compare**
 ```bash
@@ -260,7 +261,8 @@ docker images | grep flask-
 # flask-regular     ~250MB
 # flask-multistage  ~150MB (40% smaller!)
 ```
-
+![](dockerbuild2.png)
+![](dockerimges2.png)
 ---
 
 ## **Part 6: Publishing to Docker Hub**
@@ -278,7 +280,9 @@ docker tag my-flask-app:latest username/my-flask-app:latest
 docker push username/my-flask-app:1.0
 docker push username/my-flask-app:latest
 ```
-
+![](imagetag.png)
+![](imagepush.png)
+![](repository.png)
 ### **Step 2: Pull and Run from Docker Hub**
 ```bash
 # Pull from Docker Hub (on another machine)
@@ -287,7 +291,8 @@ docker pull username/my-flask-app:latest
 # Run the pulled image
 docker run -d -p 5000:5000 username/my-flask-app:latest
 ```
-
+![](Dockerpull.png)
+![](run5000.png)
 ---
 
 ## **Part 7: Node.js Example (Quick Version)**
@@ -296,8 +301,9 @@ docker run -d -p 5000:5000 username/my-flask-app:latest
 ```bash
 mkdir my-node-app
 cd my-node-app
-```
 
+```
+![](nodeapp.png)
 **`app.js`:**
 ```javascript
 const express = require('express');
@@ -316,6 +322,7 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 ```
+![](app.js.png)
 
 **`package.json`:**
 ```json
@@ -328,7 +335,7 @@ app.listen(port, () => {
   }
 }
 ```
-
+![](package.png)
 ### **Step 2: Node.js Dockerfile**
 ```dockerfile
 FROM node:18-alpine
@@ -344,7 +351,7 @@ EXPOSE 3000
 
 CMD ["node", "app.js"]
 ```
-
+![alt text](image-4.png)
 ### **Step 3: Build and Run**
 ```bash
 # Build image
@@ -359,41 +366,9 @@ curl http://localhost:3000
 
 ---
 
-## **Part 8: Quick Practice Exercises**
-
-### **Exercise 1: Tagging Practice**
-```bash
-# Create an image with three tags:
-# 1. myapp:latest
-# 2. myapp:v2.0
-# 3. yourusername/myapp:production
-
-# Solution:
-docker build -t myapp:latest -t myapp:v2.0 -t username/myapp:production .
-```
-
-### **Exercise 2: Multi-stage for Node.js**
-```bash
-# Create a multi-stage Dockerfile for Node.js that:
-# 1. Uses builder stage for npm install
-# 2. Creates final image with only production dependencies
-# 3. Uses non-root user
-
-# Hint:
-# STAGE 1: FROM node:18-alpine AS builder
-# STAGE 2: FROM node:18-alpine
-# COPY --from=builder /app/node_modules ./node_modules
-```
-
-### **Exercise 3: Clean Build**
-```bash
-# Build without cache and with .dockerignore
-docker build --no-cache -t clean-app .
-
-# Compare with cached build
-time docker build -t cached-app .
-```
-
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](testnodeapp.png)
 ---
 
 ## **Essential Docker Commands Cheatsheet**
