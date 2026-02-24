@@ -5,7 +5,7 @@
 ### Lab 1: Understanding Data Persistence
 
 **The Problem: Container Data is Ephemeral**
-```bash
+```bash 
 # Create a container that writes data
 docker run -it --name test-container ubuntu /bin/bash
 # Inside container:
