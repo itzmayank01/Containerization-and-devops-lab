@@ -26,7 +26,8 @@
 3. [Docker Networking Concepts](theory/Dockernetwork/)  
 4. [Python Flask Dockerization](theory/Pythonflask/)  
 5. [Node.js Docker Application](theory/my-node-app/)  
-6. [Session Notes – 21-02-2026](theory/21-02-2026/)  
+6. [21-02-2026](theory/21-02-2026/)
+7. [docker swarm](theory/dockerswarm/)
 
 ---
 
