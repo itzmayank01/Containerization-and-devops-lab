@@ -6,7 +6,6 @@
 **Batch:** 3    
 
 ---
-
 ## LAB
 
 1. [Experiment 1 – Vagrant & NGINX Setup](lab/exp1/intro.md)  
@@ -14,6 +13,7 @@
 3. [Experiment 3 – Deploying NGINX Using Different Base Images & Layer Comparison](lab/exp3/intro.md)  
 4. [Experiment 4 – Docker Essentials](lab/exp4/experiment-4-docker-essentials.md)  
 5. [Experiment 5 – Docker Volumes, Environment Variables, Monitoring & Networks](lab/exp5/intro.md)  
+6. [Experiment 6 – Docker Run vs Docker Compose](lab/exp6/exp6.md)  
 
 ---
 
