@@ -26,8 +26,9 @@
 3. [Docker Networking Concepts](theory/Dockernetwork/)  
 4. [Python Flask Dockerization](theory/Pythonflask/)  
 5. [Node.js Docker Application](theory/my-node-app/)  
-6. [networking concepts](theory/21-02-2026/)
-7. [Docker Swarm](theory/docker%20swarm/)
+6. [Networking Concepts](theory/21-02-2026/)  
+7. [Docker Swarm](theory/docker%20swarm/)  
+8. [Kubernetes Cluster](theory/kube%20cluster/)  
 
 ---
 
