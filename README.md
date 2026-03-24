@@ -28,7 +28,7 @@
 5. [Node.js Docker Application](theory/my-node-app/)  
 6. [Networking Concepts](theory/21-02-2026/)  
 7. [Docker Swarm](theory/docker%20swarm/)  
-8. [Kubernetes Cluster](theory/kube%20cluster/)  
+8. [Kubernetes Cluster](theory/kubecluster)  
 
 ---
 
