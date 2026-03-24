@@ -32,4 +32,6 @@
 
 ---
 
+## 🔗 Assignment 1
+👉 [Assignment 1](https://github.com/itzmayank01/Project-Assignment-1)
 
