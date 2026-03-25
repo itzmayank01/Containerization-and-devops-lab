@@ -1,5 +1,5 @@
 
-# Containerization-and-Devops-lab
+# Containerization-and-Devops
 
 **Name:** Mayank Thakur  
 **SAP ID:** 500123412  
@@ -29,7 +29,7 @@
 6. [Networking Concepts](theory/21-02-2026/)  
 7. [Docker Swarm](theory/docker%20swarm/)  
 8. [Kubernetes Cluster](theory/kube%20cluster)  
-
+9. [Apache HTTP Server & Kubernetes Deployment](theory/apache-httpd/)
 ---
 
 ## 🔗 Assignment 1
