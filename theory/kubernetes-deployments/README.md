@@ -6,8 +6,8 @@
 
 ## Hands-on Practice
 
-![img](Hands_on_practice.png)
-![img](Hands_on_practice_1.png)
-![img](Hands_on_practice_2.png)
-![img](Hands_on_practice_3.png)
-![img](Hands_on_practice_4.png)
+![img](./Hands%20on%20practice.png)
+![img](./Hands%20on%20practice%201.png)
+![img](./Hands%20on%20practice%202.png)
+![img](./Hands%20on%20practice%203.png)
+![img](./Hands%20on%20practice%204.png)
