@@ -1,3 +1,4 @@
+
 # Kubernetes Deployments
 
 ## YAML Files
@@ -5,8 +6,9 @@
 - [we.yaml](we.yaml)
 
 ## Hands-on Practice
-![img](Hands on practice.png)
-![img](Hands on practice 1.png)
-![img](Hands on practice 2.png)
-![img](Hands on practice 3.png)
-![img](Hands on practice 4.png)
+
+![img](Hands_on_practice.png)
+![img](Hands_on_practice_1.png)
+![img](Hands_on_practice_2.png)
+![img](Hands_on_practice_3.png)
+![img](Hands_on_practice_4.png)
