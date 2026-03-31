@@ -1,4 +1,4 @@
-# Containerization and DevOps Lab
+# Containerization and DevOps Lab + Theory
 
 **Name:** Mayank Thakur  
 **SAP ID:** 500123412  
