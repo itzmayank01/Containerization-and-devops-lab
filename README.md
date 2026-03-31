@@ -28,7 +28,8 @@
 6. [Networking Concepts](theory/21-02-2026/)  
 7. [Docker Swarm](theory/docker%20swarm/)  
 8. [Kubernetes Cluster](theory/kube%20cluster)  
-9. [Apache HTTP Server & Kubernetes Deployment](theory/Apache%20httpd/Exp_Apache_Kubernetes.md)  
+9. [Apache HTTP Server & Kubernetes Deployment](theory/Apache%20httpd/Exp_Apache_Kubernetes.md) 
+
 10. [Kubernetes Deployments](theory/kubernetes-deployments/)
 ---
 
