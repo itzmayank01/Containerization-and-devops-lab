@@ -387,21 +387,21 @@ docker compose down -v
 
 ---
 
-## 🎯 Result
+##  Result
 
 Successfully completed:
-- ✅ Nginx container using Docker Run — verified at `http://localhost:8081`
-- ✅ Nginx container using Docker Compose — verified at `http://localhost:8081`
-- ✅ WordPress + MySQL using Docker Run — verified at `http://localhost:8082`
-- ✅ WordPress + MySQL using Docker Compose — verified at `http://localhost:8082`
-- ✅ Docker Run to Compose conversion (Problems 1 & 2)
-- ✅ Resource limits conversion (Task 4)
-- ✅ Custom Dockerfile with Compose (Task 5)
-- ✅ Multi-stage Dockerfile with Compose (Task 6)
+-  Nginx container using Docker Run — verified at `http://localhost:8081`
+-  Nginx container using Docker Compose — verified at `http://localhost:8081`
+- WordPress + MySQL using Docker Run — verified at `http://localhost:8082`
+-  WordPress + MySQL using Docker Compose — verified at `http://localhost:8082`
+-  Docker Run to Compose conversion (Problems 1 & 2)
+- Resource limits conversion (Task 4)
+-  Custom Dockerfile with Compose (Task 5)
+-  Multi-stage Dockerfile with Compose (Task 6)
 
 ---
 
-## 🧠 Viva Questions
+##  Viva Questions
 
 **Q1. What is Docker Compose?**
 Docker Compose is a tool used to define and run multi-container Docker applications using a YAML configuration file (`docker-compose.yml`).
@@ -423,7 +423,7 @@ It stops and removes containers, networks, AND named volumes defined in the Comp
 
 ---
 
-## ✅ Conclusion
+##  Conclusion
 
 Docker Compose provides a structured and efficient way to manage multi-container applications compared to `docker run`. It simplifies deployment, improves maintainability, enables version control of infrastructure, and allows easy scaling of services using a single declarative YAML file.
 
