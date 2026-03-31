@@ -11,13 +11,13 @@ This section demonstrates how to create and manage Kubernetes Deployments using 
 
 ---
 
-##  Hands-on Practice
+## Hands-on Practice
 
-![Practice 1](./Hands_on_practice.png)
-![Practice 2](./Hands_on_practice_1.png)
-![Practice 3](./Hands_on_practice_2.png)
-![Practice 4](./Hands_on_practice_3.png)
-![Practice 5](./Hands_on_practice_4.png)
+![img](./Hands%20on%20practice.png)
+![img](./Hands%20on%20practice%201.png)
+![img](./Hands%20on%20practice%202.png)
+![img](./Hands%20on%20practice%203.png)
+![img](./Hands%20on%20practice%204.png)
 
 ---
 
