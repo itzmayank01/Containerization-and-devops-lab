@@ -16,7 +16,6 @@
 6. [Experiment 6 – Docker Run vs Docker Compose](lab/exp6/Experiment6_Docker_Compose_Mayank.md)   
 
 ---
-
 ## THEORY
 
 ### Docker Theory Modules
@@ -29,9 +28,10 @@
 6. [Networking Concepts](theory/21-02-2026/)  
 7. [Docker Swarm](theory/docker%20swarm/)  
 8. [Kubernetes Cluster](theory/kube%20cluster)  
-9. [Apache HTTP Server & Kubernetes Deployment](theory/Apache%20httpd/Exp_Apache_Kubernetes.md)
+9. [Apache HTTP Server & Kubernetes Deployment](theory/Apache%20httpd/Exp_Apache_Kubernetes.md)  
+10. [Kubernetes Deployments](theory/kubernetes-deployments/)
 ---
 
-## 🔗 Assignment 1
-👉 [Assignment 1](https://github.com/itzmayank01/Project-Assignment-1)
+##  Assignment 1
+ [Assignment 1](https://github.com/itzmayank01/Project-Assignment-1)
 
