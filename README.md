@@ -4,7 +4,7 @@
 **Batch:** 3  
 
 ---
-
+ 
 ## LAB
 
 1. [Experiment 1 – Vagrant & NGINX Setup](lab/exp1/intro.md)  
