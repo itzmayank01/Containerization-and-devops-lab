@@ -13,7 +13,7 @@
 4. [Experiment 4 – Docker Essentials](lab/exp4/experiment-4-docker-essentials.md)  
 5. [Experiment 5 – Docker Volumes, Environment Variables, Monitoring and Networks](lab/exp5/intro.md)  
 6. [Experiment 6 – Docker Run vs Docker Compose](lab/exp6/Experiment6_Docker_Compose_Mayank.md)  
-
+7. [Experiment 7 – CI/CD Pipeline using Jenkins, GitHub and Docker Hub](lab/lab-7/Lab_7_CICD_Jenkins.md)
 ---
 
 ## THEORY
