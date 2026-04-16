@@ -216,7 +216,7 @@ cat inventory.ini
 
 **Expected `inventory.ini` content:**
 
-![alt text](image-2.png)
+![alt text](screenshots/image-2.png)
 
 ### Step 6: Test Connectivity
 
@@ -252,7 +252,7 @@ ansible all -i inventory.ini -m ping
     "ping": "pong"
 }
 ```
-![alt text](image-3.png)
+![alt text](screenshots/image-3.png)
 For verbose output (useful for debugging):
 
 
@@ -284,7 +284,7 @@ For verbose output (useful for debugging):
         dest: /root/ansible_test.txt
         content: "Configured by Ansible on {{ inventory_hostname }}"
 ```
-![alt text](image-4.png)
+![alt text](screenshots/image-4.png)
 Run the playbook:
 
 ```bash
@@ -381,7 +381,7 @@ Using Ansible to read the created file across all servers:
 ```bash
 ansible all -i inventory.ini -m command -a "cat /root/ansible_test.txt"
 ```
-![alt text](image.png)
+![alt text](screenshots/image.png)
 Using Docker exec directly:
 
 ```bash
@@ -389,7 +389,7 @@ for i in {1..4}; do
     docker exec server${i} cat /root/ansible_test.txt
 done
 ```
-![alt text](image-1.png)
+![alt text](screenshots/image-1.png)
 **Expected output on each server:**
 
 ```
