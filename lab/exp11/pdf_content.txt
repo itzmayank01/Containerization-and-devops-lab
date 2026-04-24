@@ -1,0 +1,401 @@
+Experiment 11
+Title: Orchestration using Docker Compose & Docker Swarm
+(Continuation of Experiment 6)
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 1/33
+PART A – CONCEPT CONTINUATION (Simple Explanation)
+From Experiment 6, you already know:
+New Concept: Orchestration
+Orchestration = Automatic management of containers
+Think of it like a restaurant manager:
+Decides how many waiters are needed (scaling)
+Runs a single containerManual, no coordination
+Runs multiple containers
+together
+Single machine, no auto-
+healing
+What it does LimitationTool
+docker run
+Docker Compose
+2/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 2/33
+Replaces a sick waiter immediately (self-healing)
+Distributes customers evenly (load balancing)
+What Orchestration Adds:
+Increase/decrease number of
+containers
+Restart failed containers
+automatically
+Distribute trafﬁc across containers
+Run containers across multiple
+machines
+What it meansFeature
+Scaling
+Self-healing
+Load balancing
+Multi-host
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 3/33
+The Progression Path
+This experiment focuses on:This experiment focuses on: Moving from Compose →  Swarm Moving from Compose →  Swarm
+docker run  →  Docker Compose  →  Docker Swarm  →  Kubernetes
+   │               │                  │                │
+Single container  Multi-container    Orchestration    Advanced
+                 (single host)       (basic)         orchestration
+3/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 4/33
+PART B – PRACTICAL (EXTENSION OF EXPERIMENT 6)
+Prerequisites
+Docker installed (with Swarm mode enabled)
+The  ﬁle from Experiment 6 (WordPress + MySQL)
+Note:Note: If you don't have the ﬁle, here it is again: If you don't have the ﬁle, here it is again:
+docker-compose.yml
+# docker-compose.yml (from Experiment 6)
+version: '3.9'
+services:
+  db:
+    image: mysql:5.7
+    container_name: wordpress_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+    volumes:
+      - db_data:/var/lib/mysql
+  wordpress:
+    image: wordpress:latest
+4/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 5/33
+    container_name: wordpress_app
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wp_data:/var/www/html
+volumes:
+  db_data:
+  wp_data:
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 6/33
+Task 1: Check Current State (No Swarm)
+First, make sure no containers from Experiment 6 are running:
+Expected: Empty list (or only unrelated containers)
+# Stop any existing compose setup
+docker compose down -v
+# Verify no containers are running
+docker ps
+5/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 7/33
+Task 2: Initialize Docker Swarm
+Swarm mode turns your current machine into a manager node of a cluster.
+What this command does:
+Enables Swarm mode on your Docker daemon
+Makes this node a "manager" (can control the cluster)
+Creates a join token for worker nodes (not needed for single-node)
+Expected output:
+Verify Swarm is active:
+docker swarm init
+Swarm initialized: current node (xxxxx) is now a manager.
+6/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 8/33
+Expected output:
+Explanation:Explanation: This shows your node is ready as a Swarm manager. This shows your node is ready as a Swarm manager.
+docker node ls
+ID                            HOSTNAME    STATUS    AVAILABILITY   MANAGER STATUS
+xxxxxxxxxxxx                   your-pc     Ready     Active         Leader
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 9/33
+Task 3: Deploy as a Stack (Not Just Compose)
+In Swarm, we deploy a stack (a group of services) using the same Compose ﬁle.
+Breaking down the command:
+ →  Deploy a stack to Swarm
+ →  Use this Compose ﬁle
+ →  Name of the stack
+What happens behind the scenes: 1. Swarm reads the Compose ﬁle 2. Creates services
+(not individual containers) 3. Services manage containers automatically
+Expected output:
+docker stack deploy -c docker-compose.yml wpstack
+docker stack deploy
+-c docker-compose.yml
+wpstack
+7/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 10/33
+Creating network wpstack_default
+Creating service wpstack_db
+Creating service wpstack_wordpress
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 11/33
+Task 4: Verify the Deployment
+List all services in the stack:
+Expected output:
+Key change:Key change: Notice the names are  Notice the names are  and and
+ (stack name + service name) (stack name + service name)
+See detailed tasks (containers) for a service:
+Expected output:
+docker service ls
+ID             NAME                MODE         REPLICAS   IMAGE
+xxxxx          wpstack_db          replicated   1/1        mysql:5.7
+xxxxx          wpstack_wordpress   replicated   1/1        wordpress:latest
+wpstackwpstackdbdb
+wpstackwpstack wordpresswordpress
+docker service ps wpstack_wordpress
+8/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 12/33
+See all running containers:
+You'll see containers with names like:
+Observation:Observation: Containers are now  Containers are now managed by Swarmmanaged by Swarm, not directly by you., not directly by you.
+ID             NAME                  IMAGE              NODE     DESIRED STATE   CURRE
+xxxxx          wpstack_wordpress.1   wordpress:latest   your-pc   Running         Runn
+docker ps
+wpstackwordpress.1.xxxxx
+wpstack db.1.xxxxx
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 13/33
+Task 5: Access WordPress
+Open your browser:
+You should see the WordPress setup screen (same as Experiment 6).
+Important:Important: Even though Swarm is managing it, the application works the same way! Even though Swarm is managing it, the application works the same way!
+http://localhost:8080
+9/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 14/33
+Task 6: Scale the Application (Swarm's Superpower)
+This is where Swarm shines over plain Compose.
+Scale WordPress from 1 to 3 replicas:
+Expected output:
+Verify scaling:
+Notice the REPLICAS column shows  for wordpress.
+docker service scale wpstack_wordpress=3
+wpstack_wordpress scaled to 3
+overall progress: 3 out of 3 tasks
+docker service ls
+3/3
+10/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 15/33
+You'll see 3 running instances of WordPress.
+Check containers:
+You'll see 3 WordPress containers running simultaneously!
+docker service ps wpstack_wordpress
+docker ps | grep wordpress
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 16/33
+What Just Happened?
+Important Question: How do 3 containers share port 8080?
+Answer: Swarm creates an internal load balancer.
+All 3 containers receive trafﬁc
+You still access 
+Swarm distributes requests automatically
+3 WordPress containers
+Swarm balances trafﬁc
+One command scaling
+After ScalingBefore Scaling
+1 WordPress container
+No load distribution
+Manual scaling needed
+localhost:8080
+11/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 17/33
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 18/33
+Task 7: Test Self-Healing (Automatic Recovery)
+Self-healing = Swarm automatically replaces failed containers.
+Step 1: Find a WordPress container
+Copy the CONTAINER ID of one WordPress container.
+Step 2: Kill it (simulate a crash)
+Example:
+docker ps | grep wordpress
+docker kill <container-id>
+docker kill a1b2c3d4e5f6
+12/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 19/33
+Step 3: Watch Swarm recreate it
+What you'll see:
+Notice:
+The killed container shows  / 
+A new container is automatically created
+Total replicas still = 3
+Step 4: Verify new container is running
+docker service ps wpstack_wordpress
+ID             NAME                      IMAGE              NODE     DESIRED STATE   C
+xxxxx          wpstack_wordpress.1       wordpress:latest   your-pc   Running         
+yyyyy          wpstack_wordpress.2       wordpress:latest   your-pc   Running         
+zzzzz          wpstack_wordpress.3       wordpress:latest   your-pc   Running         
+aaaaa          \_ wpstack_wordpress.3    wordpress:latest   your-pc   Shutdown        
+Shutdown Failed
+docker ps | grep wordpress
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 20/33
+Still 3 containers running — Swarm ﬁxed it automatically!
+This is self-healing:This is self-healing: No manual restart needed. No manual restart needed.
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 21/33
+Task 8: Remove the Stack
+Clean up everything:
+Expected output:
+Verify removal:
+(Should show no services)
+docker stack rm wpstack
+Removing service wpstack_db
+Removing service wpstack_wordpress
+Removing network wpstack_default
+docker service ls
+13/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 22/33
+(WordPress/MySQL containers should be gone)
+Note:Note: Volumes persist unless you delete them manually with  Volumes persist unless you delete them manually with 
+..
+docker ps
+docker volumedocker volume
+pruneprune
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 23/33
+PART C – ANALYSIS (Compose vs Swarm)
+Side-by-Side Comparison
+Single host only Multi-node cluster
+ ﬂag
+(basic, no load
+balancing)
+ (built-in)
+No (port conﬂicts) Yes (internal LB)
+No (must restart
+manually)
+Yes (automatic)
+No Yes (zero downtime)
+Via container namesVia DNS + VIP
+Development, testingSimple production
+clusters
+Docker Compose Docker SwarmFeature
+Scope
+Scaling --scale docker service
+scale
+Load Balancing
+Self-Healing
+Rolling Updates
+Service Discovery
+Use Case
+14/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 24/33
+When to Use What?
+Low MediumComplexity
+Development ──────► Compose
+Testing     ──────► Compose
+Small Production ─► Swarm
+Large Production ─► Kubernetes
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 25/33
+PART D – IMPORTANT OBSERVATIONS FOR STUDENTS
+Observation 1: Compose File Reuse
+Same YAML ﬁle works for both Compose and Swarm!
+Key insight:Key insight: Swarm extends Compose, not replaces it. Swarm extends Compose, not replaces it.
+Observation 2: Containers vs Services
+Compose (single host, no
+orchestration)
+Swarm (orchestration enabled)
+ModeCommand
+docker compose up -d
+docker stack deploy
+MeaningConcept
+15/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 26/33
+In Swarm, you manage services, not individual containers.
+Observation 3: The Port Mystery Solved
+Problem: In Compose, scaling WordPress to 3 would fail because all try to use port 8080.
+Solution in Swarm:
+Swarm's load balancer listens on port 8080 once
+Trafﬁc is distributed to all 3 containers internally
+No port conﬂicts!
+A single running instance
+A deﬁnition of how to run containers
+(image, replicas, etc.)
+Container
+Service
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 27/33
+PART E – LEARNING OUTCOME CHECK
+Answer These Questions (Write in Your Lab Book)
+1. Why is Compose not enough for production?
+(Hint: Think about scaling, failures, multiple machines)
+2. What does  do differently than 
+?
+3. How does Swarm achieve self-healing?
+4. What happens if you run  on a container managed by
+Swarm?
+5. Can you use the same Compose ﬁle for both development (Compose) and
+production (Swarm)? Why?
+docker stack deploy docker
+compose up
+docker kill
+16/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 28/33
+PART F – OPTIONAL: Multi-Node Swarm (Advanced)
+If you have access to multiple VMs or computers on the same network:
+On manager node, get join token:
+On worker node, join the cluster:
+Verify from manager:
+Now your stack will distribute containers across multiple machines automatically!
+docker swarm join-token worker
+docker swarm join --token <token> <manager-ip>:2377
+docker node ls
+17/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 29/33
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 30/33
+Summary
+Final Takeaway
+Compose deﬁnes the application. Swarm runs it reliably.Compose deﬁnes the application. Swarm runs it reliably.
+Multi-container (Compose)
+One-command scaling ( )
+Automatic self-healing
+Multi-host cluster ready
+You can now doYou started with
+Single container ( )docker run
+Manual scaling scale
+Manual recovery
+Single host
+18/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 31/33
+Quick Reference Card
+# Initialize Swarm
+docker swarm init
+# Deploy stack
+docker stack deploy -c docker-compose.yml <stack-name>
+# List services
+docker service ls
+# Scale service
+docker service scale <stack-name_service-name>=<replicas>
+# See service tasks
+docker service ps <service-name>
+# Remove stack
+docker stack rm <stack-name>
+# Leave Swarm (if needed)
+docker swarm leave --force
+19/19
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 32/33
+4/24/26, 11:40 PM Home
+https://upessocs.github.io/#dir=/Lectures/Containerization and DevOps/Lab/&ﬁle=Experiment 11 Container Orchestration with Docker Stack.md 33/33
