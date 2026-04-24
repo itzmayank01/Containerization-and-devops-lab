@@ -1,4 +1,3 @@
----
 - name: Update and configure servers
   hosts: all
   become: yes
