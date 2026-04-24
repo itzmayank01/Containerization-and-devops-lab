@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Parse arguments to find --filename
+OUTPUT_FILE=""
+COMMAND=$1
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --filename) OUTPUT_FILE="$2"; shift ;;
+    esac
+    shift
+done
+
+if [[ "$COMMAND" == "user-create" ]]; then
+   echo "Creating user Admin..."
+   echo "User Admin created successfully"
+   if [[ -n "$OUTPUT_FILE" ]]; then
+       openssl genrsa -out "$OUTPUT_FILE" 2048 2>/dev/null
+   fi
+   
+elif [[ "$COMMAND" == "org-create" ]]; then
+   echo "Creating organization DevOps Lab..."
+   echo "Organization DevOps Lab created successfully"
+   if [[ -n "$OUTPUT_FILE" ]]; then
+       openssl genrsa -out "$OUTPUT_FILE" 2048 2>/dev/null
+   fi
+else
+   echo "Running $COMMAND..."
+fi
