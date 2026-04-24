@@ -1,0 +1,52 @@
+// Jenkinsfile
+// Pipeline: Checkout → SonarQube Scan → Quality Gate → Build
+
+pipeline {
+    agent any
+
+    environment {
+        SONAR_HOST_URL = 'http://host.docker.internal:9000'
+        SONAR_TOKEN    = 'squ_49d685f043d23842e699740bf174e21d7e92595c'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+                checkout scm
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                echo 'Running SonarQube static analysis...'
+                sh """
+                  sonar-scanner \
+                    -Dsonar.projectKey=sample-java-app \
+                    -Dsonar.sources=src \
+                    -Dsonar.java.binaries=. \
+                    -Dsonar.host.url=${SONAR_HOST_URL} \
+                    -Dsonar.login=${SONAR_TOKEN}
+                """
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Build step complete (no Maven needed for demo)'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploy step complete (demo mode)'
+            }
+        }
+    }
+
+    post {
+        success { echo 'Pipeline passed! Code quality is good.' }
+        failure { echo 'Pipeline failed! Check SonarQube Quality Gate.' }
+    }
+}

@@ -1,0 +1,49 @@
+# docker-compose.yml
+# This file starts two containers:
+#   1. sonar-db     → PostgreSQL database (stores SonarQube data)
+#   2. sonarqube    → The SonarQube server (web UI + analysis engine)
+version: '3.8'
+
+services:
+  # ── Database ──────────────────────────────────────────────
+  sonar-db:
+    image: postgres:13
+    container_name: sonar-db
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonarqube
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - sonar-db-data:/var/lib/postgresql/data
+    networks:
+      - sonarqube-lab
+
+  # ── SonarQube Server ──────────────────────────────────────
+  sonarqube:
+    image: sonarqube:lts-community
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://sonar-db:5432/sonarqube
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - sonar-data:/opt/sonarqube/data
+      - sonar-extensions:/opt/sonarqube/extensions
+    depends_on:
+      - sonar-db
+    networks:
+      - sonarqube-lab
+
+# Named volumes
+volumes:
+  sonar-db-data:
+  sonar-data:
+  sonar-extensions:
+
+# Isolated network
+networks:
+  sonarqube-lab:
+    driver: bridge

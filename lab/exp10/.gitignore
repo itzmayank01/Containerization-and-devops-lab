@@ -1,0 +1,15 @@
+# Python virtualenvs
+pdf_env/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# PDF output files
+*.pdf
+
+# Text dump files
+pdf_text.txt
