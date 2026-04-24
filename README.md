@@ -1,10 +1,9 @@
-
 **Name:** Mayank Thakur  
 **SAP ID:** 500123412  
 **Batch:** 3  
 
+---
 
- 
 ## LAB
 
 1. [Experiment 1 – Vagrant & NGINX Setup](lab/exp1/intro.md)  
@@ -14,10 +13,10 @@
 5. [Experiment 5 – Docker Volumes, Environment Variables, Monitoring and Networks](lab/exp5/intro.md)  
 6. [Experiment 6 – Docker Run vs Docker Compose](lab/exp6/Experiment6_Docker_Compose_Mayank.md)  
 7. [Experiment 7 – CI/CD Pipeline using Jenkins, GitHub and Docker Hub](lab/lab-7/Lab_7_CICD_Jenkins.md)  
-8. [Experiment 8 – Chef Server Setup & Configuration](lab/exp8/Lab_8_Chef_Configuration_Management.md) 
-9. [Experiment 9 - Ansible](lab/exp9/experiment-09-ansible.md)
+8. [Experiment 8 – Chef Server Setup & Configuration](lab/exp8/Lab_8_Chef_Configuration_Management.md)  
+9. [Experiment 9 – Ansible](lab/exp9/experiment-09-ansible.md)  
 
-
+---
 
 ## THEORY
 
@@ -42,5 +41,3 @@
 ## ASSIGNMENT
 
 - [Assignment 1](https://github.com/itzmayank01/Project-Assignment-1)
-
-
