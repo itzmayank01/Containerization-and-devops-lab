@@ -265,6 +265,7 @@ curl http://localhost:5000/config
 ### Lab 1: Basic Monitoring Commands
 ### docker stats - Real-time Container Metrics
 
+{% raw %}
 ```bash
 # Live stats for all containers
 docker stats
@@ -290,6 +291,7 @@ docker stats --format json --no-stream
 docker stats --no-stream --no-trunc
 
 ```
+{% endraw %}
 ![alt text](image-9.png)
 ### Lab 2: docker top - Process Monitoring
 ``` Bash
@@ -325,6 +327,7 @@ docker logs -f --tail 50 -t container-name
 ```
 ![alt text](image-10.png)
 ### Lab 4: Container Inspection
+{% raw %}
 ```Bash
 # Detailed container info
 docker inspect container-name
@@ -353,7 +356,9 @@ docker events --since '2024-01-15'
 # Format output
 docker events --format '{{.Type}} {{.Action}} {{.Actor.Attributes.name}}'
 ```
+{% endraw %}
 ### Lab 6: Practical Monitoring Script
+{% raw %}
 ```Bash
 
 #!/bin/bash
@@ -379,6 +384,7 @@ echo
 echo "4. System Info:"
 docker system df
 ```
+{% endraw %}
 ### Part 4: Docker Networks
 ### Lab 1: Understanding Docker Network Types
 ```Bash
@@ -489,6 +495,7 @@ docker run -d \
 
 
 ### Lab 5: Network Inspection & Debugging
+{% raw %}
 ```Bash
 # Inspect network
 docker network inspect bridge
@@ -506,6 +513,7 @@ docker exec container-name curl -I http://another-container
 # View network ports
 docker port container-name
 ```
+{% endraw %}
 ![alt text](image-17.png)
 
 ### Lab 6: Port Publishing vs Exposing

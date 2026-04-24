@@ -163,6 +163,7 @@ docker build -t ubuntu-server .
 ![alt text](screenshots/dockerfile.png)
 ### Step 4: Launch 4 Server Containers
 
+{% raw %}
 ```bash
 for i in {1..4}; do
     echo -e "\n Creating server${i}\n"
@@ -170,6 +171,7 @@ for i in {1..4}; do
     echo -e "IP of server${i} is $(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' server${i})"
 done
 ```
+{% endraw %}
 
 **Expected output:**
 
@@ -193,6 +195,7 @@ IP of server4 is 172.17.0.5
 
 This script auto-generates `inventory.ini` with the real container IPs:
 
+{% raw %}
 ```bash
 echo "[servers]" > inventory.ini
 for i in {1..4}; do
@@ -207,6 +210,7 @@ ansible_ssh_private_key_file=~/.ssh/id_rsa
 ansible_python_interpreter=/usr/bin/python3
 EOF
 ```
+{% endraw %}
 
 Review the generated file:
 
@@ -262,6 +266,7 @@ For verbose output (useful for debugging):
 ### Step 7: Create and Run Playbook (`update.yml`)
 
 
+{% raw %}
 ```yaml
 ---
 - name: Update and configure servers
@@ -284,6 +289,7 @@ For verbose output (useful for debugging):
         dest: /root/ansible_test.txt
         content: "Configured by Ansible on {{ inventory_hostname }}"
 ```
+{% endraw %}
 ![alt text](screenshots/image-4.png)
 Run the playbook:
 
@@ -327,6 +333,7 @@ PLAY RECAP *********************************************************************
 
 ### Step 8: Create Advanced Playbook (`playbook1.yml`)
 
+{% raw %}
 ```yaml
 ---
 - name: Configure multiple servers
@@ -365,6 +372,7 @@ PLAY RECAP *********************************************************************
           - "System info: {{ uname_output.stdout }}"
           - "Disk space: {{ disk_space.stdout_lines }}"
 ```
+{% endraw %}
 
 Run it:
 
