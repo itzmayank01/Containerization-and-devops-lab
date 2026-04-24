@@ -20,6 +20,7 @@
 | 8 | Chef Server Setup & Configuration | [View](lab/exp8/Lab_8_Chef_Configuration_Management.md) |
 | 9 | Ansible Configuration Management | [View](lab/exp9/experiment-09-ansible.md) |
 | 10 | SonarQube — Static Code Analysis | [View](lab/exp10/Exp10_SonarQube.md) |
+| 11 | Orchestration using Docker Compose & Docker Swarm | [View](lab/exp11/Exp11_Docker_Swarm.md) |
 
 ---
 
