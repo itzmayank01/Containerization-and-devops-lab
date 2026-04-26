@@ -21,6 +21,7 @@
 | 9 | Ansible Configuration Management | [View](lab/exp9/experiment-09-ansible.md) |
 | 10 | SonarQube — Static Code Analysis | [View](lab/exp10/Exp10_SonarQube.md) |
 | 11 | Orchestration using Docker Compose & Docker Swarm | [View](lab/exp11/Exp11_Docker_Swarm.md) |
+| 12 | Container Orchestration using Kubernetes | [View](lab/exp12/Exp12_Kubernetes.md) |
 
 ---
 
